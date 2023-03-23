@@ -16,6 +16,7 @@ import static the.flash.protocol.command.Command.LOGIN_RESPONSE;
 public class PacketCodeC {
 
     private static final int MAGIC_NUMBER = 0x12345678;
+    //单例模式， 静态 final变量
     public static final PacketCodeC INSTANCE = new PacketCodeC();
 
     private final Map<Byte, Class<? extends Packet>> packetTypeMap;
