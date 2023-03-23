@@ -27,6 +27,7 @@ public class ByteBufTest {
 
         // get 方法不改变读写指针
         System.out.println("getByte(3) return: " + buffer.getByte(3));
+        //3 也是以字节索引为准，这里取的是第四个字节和第五个字节，第四个字节对应的是数字4，二进制为100，第五个字节是int=12的最高位的一个字节，二进制对应的00000000，所以从index=3取出short，获取到的字节为0000010000000000，对应十进制为1024。
         System.out.println("getShort(3) return: " + buffer.getShort(3));
         System.out.println("getInt(3) return: " + buffer.getInt(3));
         print("getByte()", buffer);
