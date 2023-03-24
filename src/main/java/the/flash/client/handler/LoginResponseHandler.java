@@ -20,7 +20,7 @@ public class LoginResponseHandler extends SimpleChannelInboundHandler<LoginRespo
         loginRequestPacket.setPassword("pwd");
 
         // 写数据
-        ctx.channel().writeAndFlush(loginRequestPacket);
+        //ctx.channel().writeAndFlush(loginRequestPacket);
     }
 
     @Override
@@ -33,8 +33,15 @@ public class LoginResponseHandler extends SimpleChannelInboundHandler<LoginRespo
         }
     }
 
+    /**
+     * 这个方法会被调用，服务端调用close方法，把当前channel关闭了，客户都感知到了会触发这个方法。
+     * @param ctx
+     */
     @Override
-    public void channelInactive(ChannelHandlerContext ctx) {
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("客户端连接被关闭!");
+        //如果没有下边的代码，则不会触发pipeline中的下一个handler（MessageResponseHandler），也就是MessageResponseHandler中的channelInactive不会被调用
+        //channelInactive是顺着pipeline链式调用的
+        //super.channelInactive(ctx);
     }
 }

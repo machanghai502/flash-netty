@@ -11,4 +11,11 @@ public class MessageResponseHandler extends SimpleChannelInboundHandler<MessageR
     protected void channelRead0(ChannelHandlerContext ctx, MessageResponsePacket messageResponsePacket) {
         System.out.println(new Date() + ": 收到服务端的消息: " + messageResponsePacket.getMessage());
     }
+
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        //如果pipeline中的上一个handler的channelInactive没有调用父类的channelInactive，则不会触发当前的channelInactive方法
+        System.out.println("MessageResponseHandler channelInactive invoked");
+        super.channelInactive(ctx);
+    }
 }
