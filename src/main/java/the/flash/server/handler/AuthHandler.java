@@ -16,6 +16,10 @@ public class AuthHandler extends ChannelInboundHandlerAdapter {
         }
     }
 
+    /**
+     * 这个方法其实就是从pipeline中被移除的时候调用的，上边ctx.pipeline().remove(this);也会触发这个方法。
+     * @param ctx
+     */
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) {
         if (LoginUtil.hasLogin(ctx.channel())) {
