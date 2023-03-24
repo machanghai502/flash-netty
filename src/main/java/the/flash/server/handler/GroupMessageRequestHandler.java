@@ -10,8 +10,10 @@ import the.flash.util.SessionUtil;
 
 @ChannelHandler.Sharable
 public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<GroupMessageRequestPacket> {
-    public static final GroupMessageRequestHandler INSTANCE = new GroupMessageRequestHandler();
 
+    //单例模式
+    public static final GroupMessageRequestHandler INSTANCE = new GroupMessageRequestHandler();
+    //单例模式需要无参构造方法私有化
     private GroupMessageRequestHandler() {
 
     }
