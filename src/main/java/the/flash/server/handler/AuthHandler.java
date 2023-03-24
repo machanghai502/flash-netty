@@ -18,6 +18,7 @@ public class AuthHandler extends ChannelInboundHandlerAdapter {
 
     /**
      * 这个方法其实就是从pipeline中被移除的时候调用的，上边ctx.pipeline().remove(this);也会触发这个方法。
+     * 同时channel close的时候，也会调用这个方法，因为按照handler的生命周期，先调用channeinactive再调用handlerRemoved
      * @param ctx
      */
     @Override
